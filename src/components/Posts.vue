@@ -2,11 +2,16 @@
         <div class="posts" v-for="post in posts">
             <div class="post"> Имя: {{post.title}} </div>
             <div class="post"> Комментарий: {{post.subtitle}} </div>
+            <MyButton>delete</MyButton>
         </div>
 </template>
 
 <script>
+    import MyButton from '@/UI/MyButton.vue';
     export default {
+        components: {
+            MyButton,
+        },
         props: {
             posts: {
                 type: Array,

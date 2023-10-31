@@ -12,17 +12,21 @@
                 type="text" 
                 placeholder="комментарий" 
             >
-            <button 
+            <MyButton 
                 class="btn"
                 @click="createPost"
             >
                 добавить
-            </button>
+            </MyButton>
         </div>
 </template>
 
 <script>
+    import MyButton from '@/UI/MyButton.vue';
     export default {
+        components: {
+            MyButton,
+        },
         data() {
             return {
                 post: {
@@ -70,13 +74,5 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
-    }
-
-    .btn {
-        width: 100px;
-        align-self: flex-end;
-        height: 30px;
-        background-color: aliceblue;
-        border: 2px solid rgb(116, 116, 209);
     }
 </style>
