@@ -22,11 +22,7 @@
 </template>
 
 <script>
-    import MyButton from '@/UI/MyButton.vue';
     export default {
-        components: {
-            MyButton,
-        },
         data() {
             return {
                 post: {
@@ -37,28 +33,21 @@
         },
         methods: {
                 createPost() {
-                    this.post.id = Date.now();
-                    this.$emit('create', this.post)
-                    this.post = {
-                        title: '',
-                        subtitle: ''
+                    if (this.post.title !== '' && this.post.subtitle !== '') {
+                        this.post.id = Date.now();
+                        this.$emit('create', this.post)
+                        this.post = {
+                            title: '',
+                            subtitle: ''
+                        };
+                    } else {
+                        if (this.post.title === '') {
+                            this.post.title = 'can not be empty';
+                        } 
+                        if (this.post.subtitle === '') {
+                            this.post.subtitle = 'can not be empty';
+                        }
                     }
-                    // if (this.title.trim() !== '' && this.subtitle.trim() !== '') {
-                    //     const newPost = {
-                    //     id: Date.now(),
-                    //     title: this.title,
-                    //     subtitle: this.subtitle,
-                    //     }
-                    //     this.posts.push(newPost)
-                    //     this.title = ''
-                    //     this.subtitle = ''
-                    // } else {
-                    //     if (this.title.trim() === '') {
-                    //         this.title = 'can not be empty'
-                    //     } 
-                    //     if (this.subtitle.trim() === '')
-                    //         this.subtitle = 'can not be empty'
-                    // }
             },
         }
     }
@@ -74,5 +63,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        width: 800px;
+        margin: auto;
     }
 </style>
