@@ -1,8 +1,8 @@
 <template>
-        <div class="posts" v-for="post in posts">
+        <div class="posts" v-for="post, index in posts">
             <div class="post"> Имя: {{post.title}} </div>
             <div class="post"> Комментарий: {{post.subtitle}} </div>
-                    <my-button>delete</my-button>
+            <my-button @click="removePost(index)">delete</my-button>
         </div>
 </template>
 
@@ -12,6 +12,11 @@
             posts: {
                 type: Array,
                 required: true,
+            }
+        },
+        methods: {
+            removePost(index) {
+                this.$emit("onPostRemove", index)
             }
         }
     }

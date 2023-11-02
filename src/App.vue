@@ -5,6 +5,7 @@
         />
         <Posts 
             :posts="posts"
+            @onPostRemove="removePost"
         />
     </div>
 </template>
@@ -26,6 +27,9 @@
         methods: {
             createPost(post) {
                 this.posts.push(post);
+            },
+            removePost(index) {
+                this.posts.splice(index, 1)
             }
         }
     }
